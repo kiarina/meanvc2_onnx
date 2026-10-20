@@ -54,6 +54,15 @@ Per 160 ms chunk, 3 ODE steps, median: Mac (M1 Max) 19 ms fp32 / 14 ms int8, Win
 On a Pixel 6 paced in real time for 5 minutes, int8 averaged 92 ms (worst 188 ms). That keeps up, but leaves little room for other work,
 so on slow devices measure under real load and fall back to the unconverted voice when it does not keep up.
 
+## Playing the output in real time
+
+- The output comes in bursts: `process` returns nothing for the first chunks (the first audio comes about 330–400 ms after the first input)
+  and then gives back 0, 1 or 2 chunks' worth per call, while the input keeps arriving at 160 ms a chunk.
+- So keep headroom in the playback queue: one chunk plus 60–100 ms (we buffer 240 ms at 48 kHz before playing). With only a few tens of milliseconds
+  the queue runs dry now and then even on a fast machine, and the voice stutters.
+- If you fall back to the unconverted voice when conversion does not keep up, count the playback running short only while there is voice to play
+  (not during silence between utterances, nor while waiting for the first output), over a window of several seconds rather than per chunk.
+
 ## Speaker encoder license
 
 `speaker/speaker*.onnx` is Microsoft's WavLM-Large + ECAPA-TDNN speaker verification model and is **CC BY-SA 3.0**, unlike the Apache-2.0 conversion graphs.
