@@ -24,9 +24,9 @@ dependencies:
 ```dart
 import 'package:meanvc2_onnx/meanvc2_onnx.dart';
 
-// 1. models (pin the Hugging Face commit)
-await MeanVc2Models.download(dir,
-    revision: '<commit>', files: MeanVc2Models.files(ModelVariant.int8, speaker: ModelVariant.int8));
+// 1. models (the Hugging Face commit this package version was checked against,
+//    MeanVc2Models.defaultRevision, unless you pass `revision:`)
+await MeanVc2Models.download(dir, files: MeanVc2Models.files(ModelVariant.int8, speaker: ModelVariant.int8));
 
 // 2. register a voice once, keep the 256 numbers
 final encoder = await SpeakerEncoder.load('$dir/${MeanVc2Models.speakerFileName(ModelVariant.int8)}');

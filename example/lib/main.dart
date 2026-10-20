@@ -15,7 +15,7 @@ import 'package:path_provider/path_provider.dart';
 
 const modelDir = String.fromEnvironment('MODEL_DIR');
 const fixtureDir = String.fromEnvironment('FIXTURE_DIR');
-const revision = String.fromEnvironment('REVISION', defaultValue: 'main');
+const revision = String.fromEnvironment('REVISION', defaultValue: MeanVc2Models.defaultRevision);
 const variantName = String.fromEnvironment('VARIANT', defaultValue: 'int8');
 const threads = int.fromEnvironment('ORT_THREADS', defaultValue: 2);
 const autoExit = bool.fromEnvironment('AUTO_EXIT');

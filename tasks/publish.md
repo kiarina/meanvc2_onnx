@@ -2,17 +2,17 @@
 
 ## 状態
 
-- 2026-10-21: 公開の直前まで用意した。オーナーの承認待ち（通話機能のセッション経由で見せる）
-- 2026-10-21: モデルカード・NOTICE の本文をオーナーが見てから公開する
-- GitHub は private で作った。Hugging Face は未作成。pub.dev は API が落ち着いてから（通話機能に組み込んだ後）
+- 2026-10-21: 公開した。GitHub https://github.com/kiarina/meanvc2_onnx （public、公開の前に履歴を 1 つの commit に作り直した）、
+  Hugging Face https://huggingface.co/kiarina/MeanVC2-ONNX （commit `2db97430c6e315a819daa30e255e14615205a3d1`、19 ファイル）
+- package の既定の revision（`MeanVc2Models.defaultRevision`）をその commit にした。example を macOS でダウンロードから動かし、int8・fp32 とも手元の書き出しと同じ結果
+  （int8: 話者の encoder のコサイン 0.9996、1 回 14.6 ms／fp32: 1.0、19.8 ms、Python と 53.9 dB）
+- pub.dev は API が落ち着いてから（通話機能に組み込んだ後）。出す前に名前・版・中身をオーナーに見せ、`flutter pub publish --dry-run` を見せる
 
-## やること（承認の後）
+## 残り
 
-1. `cd tool && uv run python stage_hf.py` で `build/hf/` を作り直す（中身はこの repo の `huggingface/` と `build/onnx/`）
-2. Hugging Face に `kiarina/MeanVC2-ONNX` を作り、`build/hf/` を上げる（`hf upload kiarina/MeanVC2-ONNX build/hf .`）。上げた commit を README とこのファイルに書く
-3. GitHub の `kiarina/meanvc2_onnx` を公開にする
-4. example を Hugging Face の commit を `REVISION` に入れて動かし、ダウンロードからの通しを確かめる
-5. Spirits Garden の通話機能から git の依存（commit 固定）で使う
+1. Spirits Garden の通話機能から git の依存（commit 固定）で使う（通話機能のセッションが行う）
+2. モデルを書き出し直したら、Hugging Face に新しい commit として上げ、`defaultRevision` を更新して example で確かめる
+3. pub.dev への公開（上の条件）
 
 ## 申し送り
 

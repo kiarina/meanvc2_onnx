@@ -14,6 +14,9 @@ const conversionGraphs = ['fbank', 'asr', 'gtm', 'dit', 'vocos'];
 /// File names and downloads for the Hugging Face repository.
 class MeanVc2Models {
   static const repo = 'kiarina/MeanVC2-ONNX';
+
+  /// The Hugging Face commit this version of the package was checked against.
+  static const defaultRevision = '2db97430c6e315a819daa30e255e14615205a3d1';
   static const _int8 = {'asr', 'dit', 'vocos'};
 
   static String fileName(String graph, ModelVariant variant) =>
@@ -30,10 +33,11 @@ class MeanVc2Models {
         if (speaker != null) speakerFileName(speaker),
       ];
 
-  /// Downloads [files] of [revision] (pin a commit hash) into [dir], checking
+  /// Downloads [files] of [revision] (a commit hash; [defaultRevision] unless
+  /// given) into [dir], checking
   /// each against the sha256 in the repository's `manifest.json`. Files that
   /// are already there with the right hash are kept.
-  static Future<void> download(String dir, {required String revision, required List<String> files,
+  static Future<void> download(String dir, {String revision = defaultRevision, required List<String> files,
       void Function(String file)? onFile, http.Client? client}) async {
     final c = client ?? http.Client();
     try {
