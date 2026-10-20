@@ -1,0 +1,30 @@
+name: meanvc2_onnx
+description: >-
+  Streaming MeanVC2 zero-shot voice conversion (160 ms chunks) on ONNX Runtime
+  for Flutter, with the speaker encoder for registering a reference voice.
+version: 0.1.0-dev.1
+repository: https://github.com/kiarina/meanvc2_onnx
+issue_tracker: https://github.com/kiarina/meanvc2_onnx/issues
+# Used as a git dependency until the API settles; not on pub.dev yet.
+publish_to: none
+topics:
+  - voice-conversion
+  - onnx
+  - audio
+  - speech
+
+environment:
+  sdk: ^3.13.2
+  flutter: '>=3.47.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  crypto: ^3.0.7
+  flutter_onnxruntime: ^1.9.0
+  http: ^1.6.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0

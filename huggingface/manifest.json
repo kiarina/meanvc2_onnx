@@ -1,0 +1,499 @@
+{
+  "model": "MeanVC2 120ms_40ms, streaming",
+  "sampleRate": 16000,
+  "chunkSamples": 2560,
+  "upstream": {
+    "code": "https://github.com/ASLP-lab/MeanVC2@13acf84c1bf135ea5edad9c245b345289b06b33e",
+    "weights": "https://huggingface.co/ASLP-lab/MeanVC2@39cdd19522fe896c227da691314d9a0e3b995486",
+    "wavlm": "https://huggingface.co/s3prl/converted_ckpts@8cad0b370e7e35f8d56951d95d2be036ea85510c",
+    "s3prl": "https://github.com/s3prl/s3prl@ec8064b5889f81ca460fbe2c094ce576a6f120b7"
+  },
+  "licenses": {
+    "speaker/": "CC-BY-SA-3.0",
+    "*": "Apache-2.0"
+  },
+  "files": {
+    "fbank.onnx": {
+      "bytes": 908339,
+      "sha256": "ecbe193170abe98a8c0ba9299e8fe21b418145aca924e351c667b9257c3e28c8",
+      "inputs": {
+        "frames": [
+          "n",
+          400
+        ]
+      },
+      "outputs": {
+        "fbank": [
+          "n",
+          80
+        ]
+      },
+      "opset": 17
+    },
+    "asr.onnx": {
+      "bytes": 75781489,
+      "sha256": "27b03b3c64ef89d7d0b60e686b62f84ee5ef4f9ca943d1fab6def306721e33d9",
+      "inputs": {
+        "xs": [
+          1,
+          19,
+          80
+        ],
+        "offset": [],
+        "required_cache_size": [],
+        "att_cache": [
+          6,
+          4,
+          8,
+          128
+        ],
+        "cnn_cache": [
+          6,
+          1,
+          256,
+          8
+        ]
+      },
+      "outputs": {
+        "bn": [
+          "LayerNormalizationbn_dim_0",
+          "LayerNormalizationbn_dim_1",
+          256
+        ],
+        "new_att_cache": [
+          6,
+          4,
+          "Concatnew_att_cache_dim_2",
+          128
+        ],
+        "new_cnn_cache": [
+          6,
+          1,
+          256,
+          "Concatnew_cnn_cache_dim_3"
+        ]
+      },
+      "opset": 17
+    },
+    "asr.int8.onnx": {
+      "bytes": 28655587,
+      "sha256": "553869e3159af4497582072e66f09c16032a3b98ac2bad5c195b7443627616be",
+      "inputs": {
+        "xs": [
+          1,
+          19,
+          80
+        ],
+        "offset": [],
+        "required_cache_size": [],
+        "att_cache": [
+          6,
+          4,
+          8,
+          128
+        ],
+        "cnn_cache": [
+          6,
+          1,
+          256,
+          8
+        ]
+      },
+      "outputs": {
+        "bn": [
+          "LayerNormalizationbn_dim_0",
+          4,
+          256
+        ],
+        "new_att_cache": [
+          6,
+          4,
+          "Concatnew_att_cache_dim_2",
+          128
+        ],
+        "new_cnn_cache": [
+          6,
+          1,
+          256,
+          8
+        ]
+      },
+      "opset": 17
+    },
+    "gtm.onnx": {
+      "bytes": 17441893,
+      "sha256": "f03ff1e9da3c373445f7518fa36fc99980fe4326447235fa89ea1923f57ee224",
+      "inputs": {
+        "spks": [
+          1,
+          256
+        ]
+      },
+      "outputs": {
+        "k_mem": [
+          1,
+          32,
+          256
+        ],
+        "v_mem": [
+          1,
+          32,
+          256
+        ]
+      },
+      "opset": 17
+    },
+    "dit.onnx": {
+      "bytes": 53572968,
+      "sha256": "6e56208ad1de532ffac9c0fc622049049908096dabb1b9816e9ded45a505dce3",
+      "inputs": {
+        "x": [
+          1,
+          16,
+          80
+        ],
+        "t": [
+          1
+        ],
+        "r": [
+          1
+        ],
+        "cond": [
+          1,
+          16,
+          256
+        ],
+        "spks": [
+          1,
+          256
+        ],
+        "k_mem": [
+          1,
+          32,
+          256
+        ],
+        "v_mem": [
+          1,
+          32,
+          256
+        ],
+        "offset": [],
+        "k_cache0": [
+          1,
+          2,
+          "cache_len0",
+          64
+        ],
+        "v_cache0": [
+          1,
+          2,
+          "cache_len0",
+          64
+        ],
+        "k_cache1": [
+          1,
+          2,
+          "cache_len1",
+          64
+        ],
+        "v_cache1": [
+          1,
+          2,
+          "cache_len1",
+          64
+        ],
+        "k_cache2": [
+          1,
+          2,
+          "cache_len2",
+          64
+        ],
+        "v_cache2": [
+          1,
+          2,
+          "cache_len2",
+          64
+        ],
+        "k_cache3": [
+          1,
+          2,
+          "cache_len3",
+          64
+        ],
+        "v_cache3": [
+          1,
+          2,
+          "cache_len3",
+          64
+        ]
+      },
+      "outputs": {
+        "u": [
+          "Addu_dim_0",
+          "Addu_dim_1",
+          80
+        ],
+        "new_k_cache0": [
+          1,
+          2,
+          "new_cache_len0",
+          64
+        ],
+        "new_v_cache0": [
+          1,
+          2,
+          "new_cache_len0",
+          64
+        ],
+        "new_k_cache1": [
+          1,
+          2,
+          "new_cache_len1",
+          64
+        ],
+        "new_v_cache1": [
+          1,
+          2,
+          "new_cache_len1",
+          64
+        ],
+        "new_k_cache2": [
+          1,
+          2,
+          "new_cache_len2",
+          64
+        ],
+        "new_v_cache2": [
+          1,
+          2,
+          "new_cache_len2",
+          64
+        ],
+        "new_k_cache3": [
+          1,
+          2,
+          "new_cache_len3",
+          64
+        ],
+        "new_v_cache3": [
+          1,
+          2,
+          "new_cache_len3",
+          64
+        ]
+      },
+      "opset": 17
+    },
+    "dit.int8.onnx": {
+      "bytes": 13849138,
+      "sha256": "52ac682ed1790b196333d1dbf99fa2806b6c52076c85e438c9dede968572675a",
+      "inputs": {
+        "x": [
+          1,
+          16,
+          80
+        ],
+        "t": [
+          1
+        ],
+        "r": [
+          1
+        ],
+        "cond": [
+          1,
+          16,
+          256
+        ],
+        "spks": [
+          1,
+          256
+        ],
+        "k_mem": [
+          1,
+          32,
+          256
+        ],
+        "v_mem": [
+          1,
+          32,
+          256
+        ],
+        "offset": [],
+        "k_cache0": [
+          1,
+          2,
+          "cache_len0",
+          64
+        ],
+        "v_cache0": [
+          1,
+          2,
+          "cache_len0",
+          64
+        ],
+        "k_cache1": [
+          1,
+          2,
+          "cache_len1",
+          64
+        ],
+        "v_cache1": [
+          1,
+          2,
+          "cache_len1",
+          64
+        ],
+        "k_cache2": [
+          1,
+          2,
+          "cache_len2",
+          64
+        ],
+        "v_cache2": [
+          1,
+          2,
+          "cache_len2",
+          64
+        ],
+        "k_cache3": [
+          1,
+          2,
+          "cache_len3",
+          64
+        ],
+        "v_cache3": [
+          1,
+          2,
+          "cache_len3",
+          64
+        ]
+      },
+      "outputs": {
+        "u": [
+          "Addu_dim_0",
+          16,
+          80
+        ],
+        "new_k_cache0": [
+          1,
+          2,
+          "new_cache_len0",
+          64
+        ],
+        "new_v_cache0": [
+          1,
+          2,
+          "new_cache_len0",
+          64
+        ],
+        "new_k_cache1": [
+          1,
+          2,
+          "new_cache_len1",
+          64
+        ],
+        "new_v_cache1": [
+          1,
+          2,
+          "new_cache_len1",
+          64
+        ],
+        "new_k_cache2": [
+          1,
+          2,
+          "new_cache_len2",
+          64
+        ],
+        "new_v_cache2": [
+          1,
+          2,
+          "new_cache_len2",
+          64
+        ],
+        "new_k_cache3": [
+          1,
+          2,
+          "new_cache_len3",
+          64
+        ],
+        "new_v_cache3": [
+          1,
+          2,
+          "new_cache_len3",
+          64
+        ]
+      },
+      "opset": 17
+    },
+    "vocos.onnx": {
+      "bytes": 36489112,
+      "sha256": "f5f08602215204d1da27df5f74939084f0a9f7709fa1a1c976e330fa0391c95d",
+      "inputs": {
+        "mel": [
+          1,
+          80,
+          "frames"
+        ]
+      },
+      "outputs": {
+        "wav": [
+          "Divwav_dim_0",
+          "samples"
+        ]
+      },
+      "opset": 17
+    },
+    "vocos.int8.onnx": {
+      "bytes": 12998461,
+      "sha256": "a0dbd4c83708f6e787ceebf1c1b0833398dbdea6af770887d27b19119bba2e16",
+      "inputs": {
+        "mel": [
+          1,
+          80,
+          "frames"
+        ]
+      },
+      "outputs": {
+        "wav": [
+          "Divwav_dim_0",
+          "samples"
+        ]
+      },
+      "opset": 17
+    },
+    "speaker/speaker.onnx": {
+      "bytes": 1296503955,
+      "sha256": "875256c7738f9d573fa215dc4c327dcf509cfc132918cc39beac5425fecb610b",
+      "inputs": {
+        "wav": [
+          1,
+          "samples"
+        ]
+      },
+      "outputs": {
+        "embedding": [
+          1,
+          256
+        ]
+      },
+      "opset": 17
+    },
+    "speaker/speaker.int8.onnx": {
+      "bytes": 387106790,
+      "sha256": "ccd31b45eb2162937b94921d6e64fdd2cf5bf77193ad6f738e85f06a914a95ca",
+      "inputs": {
+        "wav": [
+          1,
+          "samples"
+        ]
+      },
+      "outputs": {
+        "embedding": [
+          1,
+          256
+        ]
+      },
+      "opset": 17
+    }
+  }
+}

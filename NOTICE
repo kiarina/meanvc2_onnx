@@ -1,0 +1,15 @@
+meanvc2_onnx
+Copyright 2026 kiarina
+
+Licensed under the Apache License, Version 2.0 (LICENSE).
+
+The streaming host loop (lib/src/stream.dart, tool/onnx_stream.py) is a port of
+`runtime/run_rt.py` from MeanVC2 (https://github.com/ASLP-lab/MeanVC2,
+Apache-2.0, Guobin Ma, Yuxuan Xia, Yuepeng Jiang, Dake Guo, Hanke Xie,
+Jingbin Hu, Yanbo Wang, Lei Xie, Pengcheng Zhu). The exporters in tool/ load
+the MeanVC2, Vocos (MIT), WeNet Fast-U2++ (Apache-2.0) and s3prl WavLM
+(Apache-2.0 code, MIT WavLM) modules and re-express parts of them for ONNX.
+
+The model weights are not in this repository. They are distributed in
+https://huggingface.co/kiarina/MeanVC2-ONNX with their own NOTICE: the
+conversion graphs are Apache-2.0, the speaker encoder is CC BY-SA 3.0.
