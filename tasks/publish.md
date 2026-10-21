@@ -6,13 +6,15 @@
   Hugging Face https://huggingface.co/kiarina/MeanVC2-ONNX （commit `2db97430c6e315a819daa30e255e14615205a3d1`、19 ファイル）
 - package の既定の revision（`MeanVc2Models.defaultRevision`）をその commit にした。example を macOS でダウンロードから動かし、int8・fp32 とも手元の書き出しと同じ結果
   （int8: 話者の encoder のコサイン 0.9996、1 回 14.6 ms／fp32: 1.0、19.8 ms、Python と 53.9 dB）
-- pub.dev: 0.1.0 を用意した（2026-10-21）。通話機能が git の依存（commit 固定）で使って動いた API のまま。`.pubignore` で `tool/`・`huggingface/`・`results/`・`tasks/`・`AGENTS.md`・build の生成物を外し、dry-run は警告 0（238 KB）。publish はオーナーの承認の後に親のセッションが行う
+- pub.dev: 0.1.0 を用意した（2026-10-21）。通話機能が git の依存（commit 固定）で使って動いた API のまま。`.pubignore` で `tool/`・`huggingface/`・`results/`・`tasks/`・`AGENTS.md`・build の生成物を外し、dry-run は警告 0（238 KB）
+- pub.dev: 0.1.0 を公開した（2026-10-21、オーナーの承認）。https://pub.dev/packages/meanvc2_onnx 、tag `v0.1.0` を push
 
 ## 残り
 
 1. Spirits Garden の通話機能から git の依存（commit 固定）で使う（通話機能のセッションが行う）
 2. モデルを書き出し直したら、Hugging Face に新しい commit として上げ、`defaultRevision` を更新して example で確かめる
-3. pub.dev への公開（承認の後。`flutter pub publish`、publisher は pub.dev のサイトで `kiarina.dev` を付け、`git tag -a v0.1.0 -m "meanvc2_onnx 0.1.0"` を push）
+3. pub.dev の publisher を付けるか決める（今は uploader のまま。pub.dev のサイトでログインして行う。オーナーの作業）
+4. 新しい版を出すときは、名前・版・中身と dry-run をオーナーに見せてから
 
 ## 申し送り
 
