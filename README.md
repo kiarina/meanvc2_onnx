@@ -9,16 +9,12 @@ It is the upstream `runtime/run_rt.py` streaming loop ported to Dart, line by li
 (log-spectral distance 0.02 dB with fp32 on macOS, Windows, Android and iOS). A new target voice is registered with the bundled speaker encoder
 from a few seconds of speech.
 
-> Status: 0.1.0-dev, used as a git dependency while the API settles. Not on pub.dev yet.
+Android, iOS, macOS and Windows (ONNX Runtime through [flutter_onnxruntime](https://pub.dev/packages/flutter_onnxruntime)). Not for the web.
 
 ## Use
 
-```yaml
-dependencies:
-  meanvc2_onnx:
-    git:
-      url: https://github.com/kiarina/meanvc2_onnx
-      ref: <commit>
+```sh
+flutter pub add meanvc2_onnx
 ```
 
 ```dart
@@ -72,6 +68,8 @@ See [NOTICE](https://huggingface.co/kiarina/MeanVC2-ONNX/blob/main/NOTICE) in th
 Only use voices with the consent of the people they belong to.
 
 ## Repository
+
+The package is `lib/` (and `example/`). The rest is in the [GitHub repository](https://github.com/kiarina/meanvc2_onnx), not in the pub package:
 
 - `lib/`: the Dart package
 - `example/`: a Flutter app that downloads the models, registers a voice and converts; with `FIXTURE_DIR` it checks itself against the Python output

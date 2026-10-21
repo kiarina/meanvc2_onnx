@@ -1,0 +1,25 @@
+# .pubignore replaces .gitignore for `pub publish`, so everything that must
+# stay out is listed here, including what .gitignore already ignores.
+
+# build outputs and tools
+build/
+**/build/
+.dart_tool/
+**/.dart_tool/
+.flutter-plugins*
+**/.flutter-plugins*
+**/ephemeral/
+**/Pods/
+.idea/
+*.iml
+.DS_Store
+**/.DS_Store
+pubspec.lock
+
+# in the GitHub repository only: exporters (and their 3 GB vendor/venv),
+# the Hugging Face staging, measurements and maintainer notes
+tool/
+huggingface/
+results/
+tasks/
+AGENTS.md

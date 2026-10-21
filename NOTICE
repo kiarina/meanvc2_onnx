@@ -10,6 +10,16 @@ Jingbin Hu, Yanbo Wang, Lei Xie, Pengcheng Zhu). The exporters in tool/ load
 the MeanVC2, Vocos (MIT), WeNet Fast-U2++ (Apache-2.0) and s3prl WavLM
 (Apache-2.0 code, MIT WavLM) modules and re-express parts of them for ONNX.
 
-The model weights are not in this repository. They are distributed in
-https://huggingface.co/kiarina/MeanVC2-ONNX with their own NOTICE: the
-conversion graphs are Apache-2.0, the speaker encoder is CC BY-SA 3.0.
+Model weights
+-------------
+The model weights are not in this package or repository. They are downloaded
+from https://huggingface.co/kiarina/MeanVC2-ONNX, which has its own NOTICE,
+and are licensed per part:
+
+  - Conversion graphs (fbank, asr, gtm, dit, vocos): Apache License 2.0
+  - Speaker encoder (speaker/speaker*.onnx, used by SpeakerEncoder):
+    Creative Commons Attribution-ShareAlike 3.0 Unported, NOT Apache-2.0.
+    It is Microsoft's WavLM-Large + ECAPA-TDNN speaker verification model
+    (microsoft/UniSpeech). Apps that download and ship it must follow
+    CC BY-SA 3.0 for that file; apps that only pass embeddings to
+    MeanVc2Stream.setTarget do not need it.
