@@ -11,7 +11,7 @@
 
 ## 残り
 
-1. Spirits Garden の通話機能から git の依存（commit 固定）で使う（通話機能のセッションが行う）
+1. 今この package を使う製品は無い。Spirits Garden の通話機能は 2026-10-22 に外した（品質不足。参照の声をまねる TTS で品質が出た）。MeanVC2 の品質が上がったら、また使う候補になる
 2. モデルを書き出し直したら、Hugging Face に新しい commit として上げ、`defaultRevision` を更新して example で確かめる
 3. 新しい版を出すときは、名前・版・中身と dry-run をオーナーに見せてから
 
